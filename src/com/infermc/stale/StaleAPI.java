@@ -30,7 +30,7 @@ public class StaleAPI extends JavaPlugin implements Listener {
         List<OfflinePlayer> players = new ArrayList<OfflinePlayer>();
         for (OfflinePlayer p : getServer().getOfflinePlayers()) {
             getLogger().info("Checking "+p.getUniqueId());
-            long secondsSince = epoch() - p.getLastPlayed();
+            long secondsSince = epoch() - (p.getLastPlayed()/1000);
             if (secondsSince >= threshold) {
                 getLogger().info(p.getUniqueId()+" hasn't been on for "+secondsSince+" seconds, Higher than "+threshold);
                 players.add(p);
@@ -38,14 +38,16 @@ public class StaleAPI extends JavaPlugin implements Listener {
                 getLogger().info(p.getUniqueId()+" was last on "+secondsSince+" ago!");
             }
         }
-
         if (players.size() > 0) {
+            getLogger().info("Calling event for "+players.size());
             PlayerExpiredEvent event = new PlayerExpiredEvent(players);
             getServer().getPluginManager().callEvent(event);
             if (!event.isCancelled()) {
                 // Remove the player data
                 getLogger().info("Removing data for all players.");
             }
+        } else {
+            getLogger().info("No players to remove data for. Skipping event.");
         }
     }
 
