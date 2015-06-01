@@ -9,8 +9,11 @@ import org.bukkit.scheduler.BukkitScheduler;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
+/**
+ * Adds Methods to manually expire players and handles automated expiry.
+ * @author Thomas Edwards (MajesticFudgie)
+ */
 public class StaleAPI extends JavaPlugin implements Listener {
     private long defaultThreshold = 2592000;
     private long defaultDelay = 3600;
@@ -77,11 +80,23 @@ public class StaleAPI extends JavaPlugin implements Listener {
     // PUBLIC, So other plugins can force expire players.
 
     /* Forcibly expires a player */
+
+    /**
+     * Manually Expire a specific player.
+     * @param player
+     * The player to expire
+     */
     public void expirePlayer(OfflinePlayer player) {
         List<OfflinePlayer> players = new ArrayList<>();
         players.add(player);
         expirePlayers(players);
     }
+
+    /**
+     * Manually Expire a list of players.
+     * @param players
+     * The players to expire.
+     */
     public void expirePlayers(List<OfflinePlayer> players) {
         // Remove exempt players.
         for (OfflinePlayer p : players) {
