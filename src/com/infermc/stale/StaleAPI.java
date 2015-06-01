@@ -25,7 +25,6 @@ public class StaleAPI extends JavaPlugin implements Listener {
 
     // Load the config and start the task.
     public void onEnable() {
-        getLogger().info("StaleAPI Loaded. :D");
         getServer().getPluginManager().registerEvents(this, this);
 
         // Try and load the config etc
@@ -48,9 +47,14 @@ public class StaleAPI extends JavaPlugin implements Listener {
                 checkPlayers();
             }
         }, 1200L, delay*20);
+        getLogger().info("StaleAPI Ready!");
     }
+
     // Public so other plugins can make us reload. (Stupid idea but someone may find a use)
-    public void reloadConfig() {
+    /**
+     * Force StaleAPI to reload
+     */
+    public void reloadConfiguration() {
         onDisable(); /* Act as if we're disabling */
         loadConfig(); /* Now load the config */
     }

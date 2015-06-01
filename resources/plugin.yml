@@ -1,4 +1,4 @@
 name: StaleAPI
-version: 0.1-SNAPSHOT
+version: 1.0.1-Alpha
 author: Thomas Edwards (MajesticFudgie)
 main: com.infermc.stale.StaleAPI
