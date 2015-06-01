@@ -6,7 +6,7 @@ import org.bukkit.event.HandlerList;
 
 import java.util.List;
 
-public final class PlayerExpiredEvent extends Event {
+public final class PlayerExpireEvent extends Event {
 
     // Vars
     private boolean cancelled = false;
@@ -15,7 +15,7 @@ public final class PlayerExpiredEvent extends Event {
     // Bukkit stuff
     private static final HandlerList handlers = new HandlerList();
 
-    public PlayerExpiredEvent(List<OfflinePlayer> plist) {
+    public PlayerExpireEvent(List<OfflinePlayer> plist) {
         players = plist;
     }
 

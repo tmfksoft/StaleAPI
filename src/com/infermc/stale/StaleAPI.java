@@ -83,7 +83,14 @@ public class StaleAPI extends JavaPlugin implements Listener {
         expirePlayers(players);
     }
     public void expirePlayers(List<OfflinePlayer> players) {
-        PlayerExpiredEvent event = new PlayerExpiredEvent(players);
+        // Remove exempt players.
+        for (OfflinePlayer p : players) {
+            if (getServer().getPlayer(p.getUniqueId()).hasPermission("stale.exempt")) {
+                players.remove(p);
+            }
+        }
+
+        PlayerExpireEvent event = new PlayerExpireEvent(players);
         getServer().getPluginManager().callEvent(event);
         if (!event.isCancelled()) {
             // Remove the player data, Assuming the event isn't cancelled!
