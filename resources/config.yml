@@ -1,0 +1,14 @@
+# StaleAPI Configuration
+# Use this to tweak how often StaleAPI checks for players and how long they have to be offline
+# for StaleAPI to expire their data.
+# Use /stale reload after editing this configuration.
+# StaleAPI will check for expired players after the first minute of being loaded.
+# Then at every delay specified.
+
+# Threshold, How many seconds can they be offline for until they expire.
+# Default: 2592000 (30 Days)
+threshold: 2592000
+
+# Delay, How often in seconds should StaleAPI check for expired players?
+# Default: 3600 (1 Hour)
+delay: 3600
