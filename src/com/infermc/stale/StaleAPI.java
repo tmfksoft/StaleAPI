@@ -103,11 +103,13 @@ public class StaleAPI extends JavaPlugin implements Listener {
      */
     public void expirePlayers(List<OfflinePlayer> players) {
         // Remove exempt players.
+        /* Spigot doesnt like me.
         for (OfflinePlayer p : players) {
             if (getServer().getPlayer(p.getUniqueId()).hasPermission("stale.exempt")) {
                 players.remove(p);
             }
         }
+        */
 
         PlayerExpireEvent event = new PlayerExpireEvent(players);
         getServer().getPluginManager().callEvent(event);
