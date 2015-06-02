@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6a86a56-7642-4871-9bb4-14a4a7e5176d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/infermc/stale/StaleAPI$1.class" afterPath="$PROJECT_DIR$/target/classes/com/infermc/stale/StaleAPI$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/StaleAPI-1.1.0-Alpha.jar" afterPath="$PROJECT_DIR$/target/StaleAPI-1.1.0-Alpha.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/infermc/stale/StaleAPI.class" afterPath="$PROJECT_DIR$/target/classes/com/infermc/stale/StaleAPI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/infermc/stale/StaleAPI.java" afterPath="$PROJECT_DIR$/src/com/infermc/stale/StaleAPI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/plugin.yml" afterPath="$PROJECT_DIR$/resources/plugin.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/plugin.yml" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="StaleAPI.iws" />
@@ -43,10 +40,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StaleAPI.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="StaleAPI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/infermc/stale/StaleAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47302905" vertical-offset="1829" max-vertical-offset="3332">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1829" max-vertical-offset="3332">
               <caret line="121" column="55" selection-start-line="121" selection-start-column="55" selection-end-line="121" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -72,10 +69,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plugin.yml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="plugin.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/plugin.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.72" vertical-offset="0" max-vertical-offset="187">
+            <state vertical-scroll-proportion="0.13737373" vertical-offset="0" max-vertical-offset="495">
               <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
               <folding />
             </state>
@@ -95,8 +92,8 @@
         <option value="$PROJECT_DIR$/src/com/infermc/stale/PlayerExpiredEvent.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/com/infermc/stale/PlayerExpireEvent.java" />
-        <option value="$PROJECT_DIR$/resources/plugin.yml" />
         <option value="$PROJECT_DIR$/src/com/infermc/stale/StaleAPI.java" />
+        <option value="$PROJECT_DIR$/resources/plugin.yml" />
       </list>
     </option>
   </component>
@@ -464,12 +461,18 @@
       <option name="project" value="LOCAL" />
       <updated>1433251894272</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fixed permissions issue. Perms now work for offline players!">
+      <created>1433253298434</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1433253298434</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -479,7 +482,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19040248" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19838946" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19838946" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19040248" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -496,6 +499,9 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.yml" />
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -514,7 +520,8 @@
     </option>
     <MESSAGE value="Added Vault Support&#10;Added PlayerExpiredEvent to signal when Player data actually expires.&#10;Added automatic exemption to Opped Players&#10;Added skipPlayer to PlayerExpireEvent to allow temporary exemption for specific players.&#10;&#10;(Still testing Vault Support)" />
     <MESSAGE value="Still got an issue with Vault Support" />
-    <option name="LAST_COMMIT_MESSAGE" value="Still got an issue with Vault Support" />
+    <MESSAGE value="Fixed permissions issue. Perms now work for offline players!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed permissions issue. Perms now work for offline players!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -656,22 +663,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1105">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/plugin.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.72" vertical-offset="0" max-vertical-offset="187">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/infermc/stale/PlayerExpiredEvent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17634855" vertical-offset="0" max-vertical-offset="612">
@@ -690,7 +681,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/infermc/stale/StaleAPI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47302905" vertical-offset="1829" max-vertical-offset="3332">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1829" max-vertical-offset="3332">
           <caret line="121" column="55" selection-start-line="121" selection-start-column="55" selection-end-line="121" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -702,6 +693,22 @@
             <element signature="e#6699#6700#0" expanded="true" />
             <element signature="e#6753#6754#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1105">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/plugin.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13737373" vertical-offset="0" max-vertical-offset="495">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>

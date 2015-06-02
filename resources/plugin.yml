@@ -4,3 +4,5 @@ author: Thomas Edwards (MajesticFudgie)
 main: com.infermc.stale.StaleAPI
 load: STARTUP
 softdepend: [Vault]
+permissions:
+    stale.exempt: {}
