@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e6a86a56-7642-4871-9bb4-14a4a7e5176d" name="Default" comment="">
-      <change type="DELETED" beforePath="E:\Users\Thomas\Development\Bukkit\Dev\workspace\StaleAPI\target\StaleAPI-1.0.1-Alpha.jar" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/infermc/stale/PlayerExpireEvent.class" afterPath="$PROJECT_DIR$/target/classes/com/infermc/stale/PlayerExpireEvent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/infermc/stale/PlayerExpiredEvent.class" afterPath="$PROJECT_DIR$/target/classes/com/infermc/stale/PlayerExpiredEvent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/infermc/stale/StaleAPI$1.class" afterPath="$PROJECT_DIR$/target/classes/com/infermc/stale/StaleAPI$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/infermc/stale/StaleAPI.class" afterPath="$PROJECT_DIR$/target/classes/com/infermc/stale/StaleAPI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/infermc/stale/PlayerExpireEvent.java" afterPath="$PROJECT_DIR$/src/com/infermc/stale/PlayerExpireEvent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StaleAPI.iml" afterPath="$PROJECT_DIR$/StaleAPI.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/infermc/stale/StaleAPI.java" afterPath="$PROJECT_DIR$/src/com/infermc/stale/StaleAPI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/plugin.yml" afterPath="$PROJECT_DIR$/resources/plugin.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/plugin.yml" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+    <list default="true" id="e6a86a56-7642-4871-9bb4-14a4a7e5176d" name="Default" comment="Added Vault Support&#10;Added PlayerExpiredEvent to signal when Player data actually expires.&#10;Added automatic exemption to Opped Players&#10;Added skipPlayer to PlayerExpireEvent to allow temporary exemption for specific players.&#10;&#10;(Still testing Vault Support)">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/StaleAPI-1.1.0-Alpha.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_milkbowl_vault_VaultAPI_1_5.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bukkit_bukkit_1_8_R0_1_SNAPSHOT.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/infermc/stale/PlayerExpiredEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="StaleAPI.iws" />
@@ -53,8 +46,8 @@
       <file leaf-file-name="StaleAPI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/infermc/stale/StaleAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36721992" vertical-offset="1965" max-vertical-offset="3383">
-              <caret line="126" column="32" selection-start-line="126" selection-start-column="32" selection-end-line="126" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.43775934" vertical-offset="1965" max-vertical-offset="3383">
+              <caret line="128" column="53" selection-start-line="128" selection-start-column="53" selection-end-line="128" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2014#2140#0" expanded="true" />
@@ -110,6 +103,9 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -470,6 +466,13 @@
       <option name="number" value="Default" />
       <updated>1433106441748</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added Vault Support&#10;Added PlayerExpiredEvent to signal when Player data actually expires.&#10;Added automatic exemption to Opped Players&#10;Added skipPlayer to PlayerExpireEvent to allow temporary exemption for specific players.&#10;&#10;(Still testing Vault Support)">
+      <created>1433245394029</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1433245394029</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -479,9 +482,10 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19040248" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19040248" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19838946" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -516,6 +520,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="Added Vault Support&#10;Added PlayerExpiredEvent to signal when Player data actually expires.&#10;Added automatic exemption to Opped Players&#10;Added skipPlayer to PlayerExpireEvent to allow temporary exemption for specific players.&#10;&#10;(Still testing Vault Support)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Vault Support&#10;Added PlayerExpiredEvent to signal when Player data actually expires.&#10;Added automatic exemption to Opped Players&#10;Added skipPlayer to PlayerExpireEvent to allow temporary exemption for specific players.&#10;&#10;(Still testing Vault Support)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -691,8 +697,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/infermc/stale/StaleAPI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36721992" vertical-offset="1965" max-vertical-offset="3383">
-          <caret line="126" column="32" selection-start-line="126" selection-start-column="32" selection-end-line="126" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.43775934" vertical-offset="1965" max-vertical-offset="3383">
+          <caret line="128" column="53" selection-start-line="128" selection-start-column="53" selection-end-line="128" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2014#2140#0" expanded="true" />
