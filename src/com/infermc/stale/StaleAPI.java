@@ -124,7 +124,7 @@ public class StaleAPI extends JavaPlugin implements Listener {
             OfflinePlayer p = i.next();
             // Check their perms
             if (gotVault() && perms != null) {
-                if (perms.has(p.getPlayer(), "stale.exempt")) i.remove();
+                if (perms.playerHas(getServer().getWorlds().get(0).getName(),p, "stale.exempt")) i.remove();
             }
             // Check if they're Operator.
             if (p.isOp()) i.remove();
