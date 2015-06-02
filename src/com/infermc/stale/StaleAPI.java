@@ -11,7 +11,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Adds Methods to manually expire players and handles automated expiry.
@@ -26,7 +25,7 @@ public class StaleAPI extends JavaPlugin implements Listener {
     BukkitScheduler scheduler = getServer().getScheduler();
     private int task;
 
-    private Permission perms;
+    private static Permission perms = null;
 
     // Load the config and start the task.
     public void onEnable() {
@@ -120,22 +119,15 @@ public class StaleAPI extends JavaPlugin implements Listener {
      */
     public void expirePlayers(List<OfflinePlayer> players) {
         // Remove exempt players.
-
         Iterator<OfflinePlayer> i = players.iterator();
         while (i.hasNext()) {
             OfflinePlayer p = i.next();
             // Check their perms
-            if (gotVault()) {
-                if (perms.has(p.getPlayer(), "stale.exempt")) {
-                    getLogger().info(p.getName()+" has 'stale.exempt' and is exempt.");
-                    players.remove(p);
-                }
+            if (gotVault() && perms != null) {
+                if (perms.has(p.getPlayer(), "stale.exempt")) i.remove();
             }
             // Check if they're Operator.
-            if (p.isOp()) {
-                getLogger().info(p.getName()+" is OP and is exempt.");
-                players.remove(p);
-            }
+            if (p.isOp()) i.remove();
         }
 
         if (players.size() <= 0) {
@@ -152,10 +144,10 @@ public class StaleAPI extends JavaPlugin implements Listener {
             getServer().getPluginManager().callEvent(expiredEvent);
 
             // Remove the player data, Assuming the event isn't cancelled!
-            getLogger().info("Removing data for all "+event.getPlayers().size()+" players.");
 
             // Get the main world folder.
             File BaseFolder = new File(getServer().getWorlds().get(0).getWorldFolder(), "playerdata");
+
             for (OfflinePlayer p : event.getPlayers()) {
                 // Get and remove the players file.
                 File playerFile = new File(BaseFolder, p.getUniqueId()+".dat");
@@ -163,8 +155,10 @@ public class StaleAPI extends JavaPlugin implements Listener {
                     playerFile.delete();
                 }
             }
+
+            // Get how many were skipped.
             int skipped = players.size()-event.getPlayers().size();
-            getLogger().info(event.getPlayers()+" players will expired. "+skipped+" players were skipped.");
+            getLogger().info(event.getPlayers().size()+" players have expired. "+skipped+" players were skipped.");
         } else {
             getLogger().info("PlayerExpireEvent was cancelled. No players will expire.");
         }
@@ -181,8 +175,11 @@ public class StaleAPI extends JavaPlugin implements Listener {
 
     // Try and setup perms.
     private boolean setupPermissions() {
-        RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
-        perms = rsp.getProvider();
+        //RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
+        RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(net.milkbowl.vault.permission.Permission.class);
+        if (rsp != null) {
+            perms = rsp.getProvider();
+        }
         return perms != null;
     }
 
