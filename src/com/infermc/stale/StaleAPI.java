@@ -1,14 +1,17 @@
 package com.infermc.stale;
 
+import net.milkbowl.vault.permission.Permission;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Adds Methods to manually expire players and handles automated expiry.
@@ -23,12 +26,23 @@ public class StaleAPI extends JavaPlugin implements Listener {
     BukkitScheduler scheduler = getServer().getScheduler();
     private int task;
 
+    private Permission perms;
+
     // Load the config and start the task.
     public void onEnable() {
         getServer().getPluginManager().registerEvents(this, this);
 
         // Try and load the config etc
         loadConfig();
+
+        if (gotVault()) {
+            if (!setupPermissions()) {
+                getLogger().warning("Unable to setup permissions provider 'Vault' :(");
+                getLogger().warning("StaleAPI will be unable to check for exemptions.");
+            }
+        } else {
+            getLogger().info("Your server doesn't have Vault. StaleAPI will be unable to check for exempt players.");
+        }
     }
     public void onDisable() {
         // Cancel the task.
@@ -77,7 +91,10 @@ public class StaleAPI extends JavaPlugin implements Listener {
 
         // If there's any players. Run the event.
         if (players.size() > 0) {
+            getLogger().info(players.size()+" potential players found for expiry.");
             expirePlayers(players);
+        } else {
+            getLogger().info("No potential players found for expiry.");
         }
     }
 
@@ -103,32 +120,73 @@ public class StaleAPI extends JavaPlugin implements Listener {
      */
     public void expirePlayers(List<OfflinePlayer> players) {
         // Remove exempt players.
-        /* Spigot doesnt like me.
-        for (OfflinePlayer p : players) {
-            if (getServer().getPlayer(p.getUniqueId()).hasPermission("stale.exempt")) {
+
+        Iterator<OfflinePlayer> i = players.iterator();
+        while (i.hasNext()) {
+            OfflinePlayer p = i.next();
+            // Check their perms
+            if (gotVault()) {
+                if (perms.has(p.getPlayer(), "stale.exempt")) {
+                    getLogger().info(p.getName()+" has 'stale.exempt' and is exempt.");
+                    players.remove(p);
+                }
+            }
+            // Check if they're Operator.
+            if (p.isOp()) {
+                getLogger().info(p.getName()+" is OP and is exempt.");
                 players.remove(p);
             }
         }
-        */
+
+        if (players.size() <= 0) {
+            // Called when all possible players are exempt.
+            getLogger().info("All potential players are exempt. Skipping.");
+            return;
+        }
 
         PlayerExpireEvent event = new PlayerExpireEvent(players);
         getServer().getPluginManager().callEvent(event);
         if (!event.isCancelled()) {
+            // Tell other plugins player data is being removed.
+            PlayerExpiredEvent expiredEvent = new PlayerExpiredEvent(event.getPlayers());
+            getServer().getPluginManager().callEvent(expiredEvent);
+
             // Remove the player data, Assuming the event isn't cancelled!
-            getLogger().info("Removing data for all "+players.size()+" players.");
+            getLogger().info("Removing data for all "+event.getPlayers().size()+" players.");
 
             // Get the main world folder.
             File BaseFolder = new File(getServer().getWorlds().get(0).getWorldFolder(), "playerdata");
-            for (OfflinePlayer p : players) {
+            for (OfflinePlayer p : event.getPlayers()) {
                 // Get and remove the players file.
                 File playerFile = new File(BaseFolder, p.getUniqueId()+".dat");
                 if (playerFile.exists()) {
                     playerFile.delete();
                 }
             }
+            int skipped = players.size()-event.getPlayers().size();
+            getLogger().info(event.getPlayers()+" players will expired. "+skipped+" players were skipped.");
+        } else {
+            getLogger().info("PlayerExpireEvent was cancelled. No players will expire.");
         }
     }
 
+    /**
+     * Checks if the server has the Vault plugin.
+     * @return
+     * Whether the Vault plugin is enabled or not. (False if it doesn't exist)
+     */
+    public boolean gotVault() {
+        return getServer().getPluginManager().getPlugin("Vault") != null;
+    }
+
+    // Try and setup perms.
+    private boolean setupPermissions() {
+        RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
+        perms = rsp.getProvider();
+        return perms != null;
+    }
+
+    // Maths!
     private long epoch() {
         return System.currentTimeMillis()/1000;
     }

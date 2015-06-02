@@ -6,7 +6,7 @@
 
     <groupId>com.infermc.stale</groupId>
     <artifactId>StaleAPI</artifactId>
-    <version>1.0.2-Alpha</version>
+    <version>1.1.0-Alpha</version>
 
     <build>
         <sourceDirectory>src</sourceDirectory>
@@ -37,6 +37,10 @@
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/groups/public</url>
         </repository>
+        <repository>
+            <id>vault-repo</id>
+            <url>http://nexus.theyeticave.net/content/repositories/pub_releases</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -44,6 +48,12 @@
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
             <version>1.8-R0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>net.milkbowl.vault</groupId>
+            <artifactId>VaultAPI</artifactId>
+            <version>1.5</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

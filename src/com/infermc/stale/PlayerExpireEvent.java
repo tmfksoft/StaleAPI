@@ -58,6 +58,17 @@ public final class PlayerExpireEvent extends Event {
         cancelled = state;
     }
 
+    /**
+     * Removes a player from the list of expiring players, ideal to skip protected players.
+     * @param player
+     * The player to skip expiry.
+     */
+    public void skipPlayer(OfflinePlayer player) {
+        if (players.contains(player)) {
+            players.remove(player);
+        }
+    }
+
     // Essential stuff.
     public HandlerList getHandlers() {
         return handlers;
