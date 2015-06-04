@@ -7,7 +7,7 @@ import org.bukkit.event.HandlerList;
 import java.util.List;
 
 /**
- * Called when a players data has already expired. Intend to tell plugins to remove their player data. (Cannot be cancelled)
+ * Called when a players data has already expired. Intended to tell plugins to remove their player data. (Cannot be cancelled)
  * @author Thomas Edwards (MajesticFudgie)
  */
 public final class PlayerExpiredEvent extends Event {
