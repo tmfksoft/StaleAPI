@@ -21,7 +21,6 @@ public class StaleAPI extends JavaPlugin implements Listener {
     private long defaultDelay = 3600;
 
     private long threshold = defaultThreshold; // 30 Days, In seconds.
-    private long delay = defaultDelay; // 1 hour in ticks.
     BukkitScheduler scheduler = getServer().getScheduler();
     private int task;
 
@@ -53,13 +52,13 @@ public class StaleAPI extends JavaPlugin implements Listener {
         // Schedule a check after the first minute. Then repeated at the specified delay.
         saveDefaultConfig();
         threshold = getConfig().getLong("threshold",defaultThreshold);
-        delay = getConfig().getLong("delay",defaultDelay);
+        long delay = getConfig().getLong("delay", defaultDelay);
         task = scheduler.scheduleSyncRepeatingTask(this, new Runnable() {
             @Override
             public void run() {
                 checkPlayers();
             }
-        }, 1200L, delay*20);
+        }, 1200L, delay *20);
         getLogger().info("StaleAPI Ready!");
     }
 
@@ -75,7 +74,7 @@ public class StaleAPI extends JavaPlugin implements Listener {
     // Skim through all players and check for expired ones.
     private void checkPlayers() {
         getLogger().info("Checking for expired players.");
-        List<OfflinePlayer> players = new ArrayList<OfflinePlayer>();
+        List<OfflinePlayer> players = new ArrayList<>();
 
         // Populate the list with players that haven't been on for the specified threshold.
         for (OfflinePlayer p : getServer().getOfflinePlayers()) {
@@ -120,13 +119,14 @@ public class StaleAPI extends JavaPlugin implements Listener {
     public void expirePlayers(List<OfflinePlayer> players) {
         // Remove exempt players.
         Iterator<OfflinePlayer> i = players.iterator();
-        Boolean remove = false;
+        Boolean remove;
+        String defaultWorld = getServer().getWorlds().get(0).getName();
         while (i.hasNext()) {
             OfflinePlayer p = i.next();
             // Check their perms
             remove = false;
             if (gotVault() && perms != null) {
-                if (perms.playerHas(getServer().getWorlds().get(0).getName(),p, "stale.exempt")) remove=true;
+                if (perms.playerHas(defaultWorld,p, "stale.exempt")) remove=true;
             }
             // Check if they're Operator.
             if (p.isOp()) remove=true;
@@ -157,7 +157,10 @@ public class StaleAPI extends JavaPlugin implements Listener {
                 // Get and remove the players file.
                 File playerFile = new File(BaseFolder, p.getUniqueId()+".dat");
                 if (playerFile.exists()) {
-                    playerFile.delete();
+                    if(!playerFile.delete()) {
+                        getLogger().warning("Unable to remove .dat file for "+p.getName()+"!");
+                        getLogger().warning("Please try removing manually and check your directory/file permissions!");
+                    }
                 }
             }
 
