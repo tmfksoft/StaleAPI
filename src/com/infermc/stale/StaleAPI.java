@@ -120,14 +120,19 @@ public class StaleAPI extends JavaPlugin implements Listener {
     public void expirePlayers(List<OfflinePlayer> players) {
         // Remove exempt players.
         Iterator<OfflinePlayer> i = players.iterator();
+        Boolean remove = false;
         while (i.hasNext()) {
             OfflinePlayer p = i.next();
             // Check their perms
+            remove = false;
             if (gotVault() && perms != null) {
-                if (perms.playerHas(getServer().getWorlds().get(0).getName(),p, "stale.exempt")) i.remove();
+                if (perms.playerHas(getServer().getWorlds().get(0).getName(),p, "stale.exempt")) remove=true;
             }
             // Check if they're Operator.
-            if (p.isOp()) i.remove();
+            if (p.isOp()) remove=true;
+
+            // Remove them?
+            if(remove) i.remove();
         }
 
         if (players.size() <= 0) {
