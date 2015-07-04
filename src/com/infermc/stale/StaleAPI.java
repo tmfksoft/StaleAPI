@@ -18,7 +18,6 @@ import java.util.List;
  */
 public class StaleAPI extends JavaPlugin implements Listener {
     private long defaultThreshold = 2592000;
-    private long defaultDelay = 3600;
 
     private long threshold = defaultThreshold; // 30 Days, In seconds.
     BukkitScheduler scheduler = getServer().getScheduler();
@@ -52,6 +51,7 @@ public class StaleAPI extends JavaPlugin implements Listener {
         // Schedule a check after the first minute. Then repeated at the specified delay.
         saveDefaultConfig();
         threshold = getConfig().getLong("threshold",defaultThreshold);
+        long defaultDelay = 3600;
         long delay = getConfig().getLong("delay", defaultDelay);
         task = scheduler.scheduleSyncRepeatingTask(this, new Runnable() {
             @Override
@@ -66,6 +66,7 @@ public class StaleAPI extends JavaPlugin implements Listener {
     /**
      * Force StaleAPI to reload
      */
+    @SuppressWarnings("unused")
     public void reloadConfiguration() {
         onDisable(); /* Act as if we're disabling */
         loadConfig(); /* Now load the config */
@@ -105,6 +106,7 @@ public class StaleAPI extends JavaPlugin implements Listener {
      * @param player
      * The player to expire
      */
+    @SuppressWarnings("unused")
     public void expirePlayer(OfflinePlayer player) {
         List<OfflinePlayer> players = new ArrayList<>();
         players.add(player);
